@@ -1,0 +1,25 @@
+;; --- DATA ---
+N1:        word  5
+N2:        word  2
+
+SP_ADDR:   word  0100
+
+;; --- MAIN ---
+START:     LDWI  R15       SP_ADDR  ; setup SP
+           SPWR  R15
+           LDWA  R1        N1
+           LDWA  R2        N2
+           CALL  MUL
+           JMP   END
+
+;; --- MUL ---
+MUL:       LDWI  R0        0
+           MV    R2        R3
+MUL_LOOP:  JMPZ  MUL_END
+           ADD   R1        R0
+           DEC   R3
+           JMP   MUL_LOOP
+MUL_END:   RET
+
+;; --- END ---
+END:       HLT

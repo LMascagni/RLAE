@@ -1,0 +1,19 @@
+;; --- DATA ---
+N1:        word  0100
+N2:        word  2
+
+
+;; --- MAIN ---
+START:     LDWI  R0        0
+           LDWA  R1        N1
+           LDWA  R2        N2
+           MV    R2        R3
+
+;; --- MUL ---
+MUL_LOOP:  JMPZ  END
+           ADD   R1        R0
+           DEC   R3
+           JMP   MUL_LOOP
+
+;; --- END ---
+END:       HLT

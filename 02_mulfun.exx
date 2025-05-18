@@ -1,0 +1,45 @@
+0006
+05 | N1:        word  5
+00 | 
+02 | N2:        word  2
+00 | 
+00 | SP_ADDR:   word  0100
+01 | 
+F0 | START:     LDWI  R15       SP_ADDR  ; setup SP
+10 | 
+04 | 
+00 | 
+F0 |            SPWR  R15
+0E | 
+10 |            LDWA  R1        N1
+20 | 
+00 | 
+00 | 
+20 |            LDWA  R2        N2
+20 | 
+02 | 
+00 | 
+00 |            CALL  MUL
+C8 | 
+1A | 
+00 | 
+10 |            JMP   END
+C1 | 
+00 | MUL:       LDWI  R0        0
+10 | 
+00 | 
+00 | 
+23 |            MV    R2        R3
+04 | 
+06 | MUL_LOOP:  JMPZ  MUL_END
+C2 | 
+10 |            ADD   R1        R0
+40 | 
+30 |            DEC   R3
+49 | 
+F8 |            JMP   MUL_LOOP
+C1 | 
+00 | MUL_END:   RET
+C9 | 
+00 | END:       HLT
+CF | 

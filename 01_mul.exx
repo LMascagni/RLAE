@@ -1,0 +1,29 @@
+0004
+00 | N1:        word  0100
+01 | 
+02 | N2:        word  2
+00 | 
+00 | START:     LDWI  R0        0
+10 | 
+00 | 
+00 | 
+10 |            LDWA  R1        N1
+20 | 
+00 | 
+00 | 
+20 |            LDWA  R2        N2
+20 | 
+02 | 
+00 | 
+23 |            MV    R2        R3
+04 | 
+06 | MUL_LOOP:  JMPZ  END
+C2 | 
+10 |            ADD   R1        R0
+40 | 
+30 |            DEC   R3
+49 | 
+F8 |            JMP   MUL_LOOP
+C1 | 
+00 | END:       HLT
+CF | 
