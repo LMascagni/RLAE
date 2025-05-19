@@ -1,0 +1,50 @@
+;; --- MUL ---
+MUL:       LDWI  R0 0
+           MV    R2 R3
+MUL_LOOP:  JMPZ  MUL_END
+           ADD   R1 R0
+           DEC   R3
+           JMP   MUL_LOOP
+MUL_END:   RET
+
+;; --- DATA ---
+N1:        word  1
+N2:        word  2
+N3:        word  3
+
+SP_ADDR:   word  0100
+
+;; --- MAIN ---
+START:     LDWA  R10 SP_ADDR
+           SPWR  R10
+
+           LDWA  R1 N1
+           LDWA  R2 N2
+
+           PUSH  R1           ;salvo i registri nello stack
+           PUSH  R2
+           PUSH  R10
+
+           CALL  MUL
+
+           POP   R10          ;rispristino i valori dallo stack
+           POP   R2
+           POP   R1
+
+           LDWA  R1 N3
+           MV    R0 R2
+
+           PUSH  R1           ;salvo i registri nello stack
+           PUSH  R2
+           PUSH  R10
+
+           CALL  MUL
+
+           POP   R10          ;rispristino i valori dallo stack
+           POP   R2
+           POP   R1
+
+           JMP   END
+
+;; --- END ---
+END:       HLT

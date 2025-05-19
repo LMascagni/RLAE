@@ -1,0 +1,24 @@
+N:  word 1
+
+
+START: LDWA R0 N
+        MV R15 R0
+        LDWI R14 1
+        SUB R15 R14
+        JMPZ S1
+        MV R15 R0
+        LDWI R14 1
+        SUB R15 R14
+        JMPZ S1MV R15 R0
+        LDWI R14 1
+        SUB R15 R14
+        JMPZ S1MV R15 R0
+        LDWI R14 1
+        SUB R15 R14
+        JMPZ S1MV R15 R0
+        LDWI R14 1
+        SUB R15 R14
+        JMPZ S1MV R15 R0
+        LDWI R14 1
+        SUB R15 R14
+        JMPZ S1
